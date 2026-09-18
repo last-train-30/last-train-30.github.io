@@ -85,7 +85,7 @@ button{font:inherit}
     </div>
   </div>
 
-  <div class="stage"><div class="frame"><img id="sceneImage" src="assets/scene_atlas_v6_720_q70.jpg" alt="scene image"></div></div>
+  <div class="stage"><div class="frame"><img id="sceneImage" src="assets/scene_atlas_v7_720_q70.jpg" alt="scene image"></div></div>
   <div class="chapter-badge" id="badge">里奈</div>
   <button class="menu-btn menu-fab" id="openMenu">話数選択</button>
   <div class="delta" id="delta">+10</div>
@@ -101,7 +101,7 @@ button{font:inherit}
     <div class="card">
       <div class="eyebrow">RINA ROUTE</div>
       <h2>里奈ルート</h2>
-      <p>各話の関係値目標を達成すると、次の話が解放されます。第五話まで追加済み。選択肢の並び順は毎回ランダムで入れ替わります。</p>
+      <p>各話の関係値目標を達成すると、次の話が解放されます。第六話まで追加済み。選択肢の並び順は毎回ランダムで入れ替わります。</p>
       <div class="chapter-list" id="chapterList"></div>
       <button class="secondary" id="resetBtn">進行状況をリセット</button>
     </div>
@@ -205,10 +205,27 @@ const chapters = [
       {speaker:"里奈",sprite:24,text:"帰り際の駅前。スマホを握った里奈は、少し恥ずかしそうにしながらも、はっきりと言う。\n「次に会う時は……もっと恋人らしいこと、してもいい？」",choices:[{label:"もちろん。俺も同じこと考えてた",delta:10,reaction:"「……よかった」里奈は安心したように笑って、それから小さく『楽しみにしてる』と囁いた。"},{label:"じゃあ、次は里奈から誘って",delta:8,reaction:"「うん。ちゃんと勇気出して誘う」里奈はスマホを胸元で抱きしめた。"},{label:"今でも十分、恋人らしいよ",delta:7,reaction:"「……そうかな」里奈は照れながらも、心から嬉しそうに笑った。"}]}
     ]
   }
+  ,
+  {
+    id: 6,
+    title: "第六話　終電の、その先へ",
+    target: 150,
+    startScore: 124,
+    clearTitle: "これからも、ずっと",
+    clearText: "ホームへ向かう直前、里奈は振り返ってあなたの手を握り直した。\n\n「終電って、前は“帰らなきゃいけない時間”だったのに」\n「今は、次に会う約束をする時間みたい」\n\n雨の夜に偶然始まったふたりの物語は、終電の先へ。\n次の約束は、もう偶然じゃない。",
+    teaser: "RINA ROUTE / CHAPTER 2 NEXT\n第七話『すれ違う気持ち』\n――近づいたからこそ見えてくる、ふたりの違い。恋人になって初めての小さなすれ違いが始まる。\n\n※第七話は次回追加予定",
+    scenes: [
+      {speaker:"里奈",sprite:25,text:"週末の夜。駅前で待っていた里奈は、あなたを見つけるとすぐに表情を明るくした。\n「おかえり……って言うの、まだちょっと変かな。でも、会いたかった」",choices:[{label:"俺も。会った瞬間、安心した",delta:8,reaction:"「……同じだ」里奈は照れながらも、嬉しそうに距離を縮めた。"},{label:"待たせた分、今日は里奈の行きたいところへ",delta:7,reaction:"「ほんと？ じゃあ少しだけわがまま言おうかな」里奈の声が弾んだ。"},{label:"そんなに待ってた？",delta:3,reaction:"「うん。時計、何回も見ちゃった」里奈は正直に笑った。"}]},
+      {speaker:"里奈",sprite:26,text:"雨上がりの駅を出て、川沿いまで歩く。里奈は街の灯りを見ながら小さく息を吐いた。\n「恋人になったら、もっと自然に話せると思ってた。でも……前より緊張する時もあるね」",choices:[{label:"大事になった分、緊張するんだと思う",delta:10,reaction:"「……その言い方、好き」里奈は少し安心したように笑った。"},{label:"俺も同じ。だからゆっくりでいい",delta:8,reaction:"「うん。ふたりのペースでいこう」里奈はあなたの歩幅に合わせた。"},{label:"そのうち慣れるよ",delta:4,reaction:"「そうかな。慣れても、ドキドキは残ってほしいかも」里奈は頬を赤くした。"}]},
+      {speaker:"里奈",sprite:27,text:"里奈が少し先を歩いてから振り返り、あなたへ手を差し出す。\n「ねえ。今日は……私から手、つないでもいい？」",choices:[{label:"もちろん。むしろ待ってた",delta:10,reaction:"「……じゃあ、離さないからね」里奈は笑って、あなたの手をしっかり握った。"},{label:"里奈から言ってくれるの、嬉しい",delta:8,reaction:"「私だって、少しは素直になれるんだよ」里奈は照れながら手を重ねた。"},{label:"聞かなくてもいいのに",delta:6,reaction:"「それもそうだね」里奈は少し大胆になったように手を取った。"}]},
+      {speaker:"里奈",sprite:28,text:"駅へ戻る途中、雨がまた細く降り始める。屋根の下で立ち止まると、里奈があなたをじっと見つめた。\n「私、ずっと考えてたの。好きって伝えた後も、ちゃんと伝え続けないとダメなんだなって」",choices:[{label:"何度でも聞きたい。俺も何度でも言う",delta:10,reaction:"「……それなら安心」里奈は目を細め、あなたの手にもう一度触れた。"},{label:"言葉にしなくても分かる時もあるよ",delta:6,reaction:"「うん。でも私は、言葉でも残したいな」里奈はまっすぐに答えた。"},{label:"今日は何を伝えたい？",delta:8,reaction:"「あなたと会えてよかったってこと」迷いのない声だった。"}]},
+      {speaker:"里奈",sprite:29,text:"終電まであと10分。売店で買った温かい飲み物を両手で包みながら、里奈が微笑む。\n「ねえ。終電の時間、もう前ほど嫌いじゃないよ。だって……次に会う約束ができるから」",choices:[{label:"じゃあ、次の約束を今決めよう",delta:10,reaction:"「うん。今度はもっと長く一緒にいようね」里奈はすぐにスマホを開いた。"},{label:"次は終電を気にしなくていい日にしよう",delta:10,reaction:"「……それ、楽しみにしててもいい？」里奈は頬を赤くして嬉しそうに頷いた。"},{label:"またここで待ち合わせよう",delta:7,reaction:"「うん。ここ、私たちの場所みたいで好き」里奈は駅の灯りを見上げた。"}]}
+    ]
+  }
 ]
 
-const SAVE_KEY = 'lasttrain30_rina_v6';
-const SPRITE_COUNT = 25;
+const SAVE_KEY = 'lasttrain30_rina_v7';
+const SPRITE_COUNT = 30;
 const SPRITE_STEP = 100 / SPRITE_COUNT;
 let save = { unlocked: 1, best: 0, chapterClear: {} };
 try { save = { ...save, ...(JSON.parse(localStorage.getItem(SAVE_KEY)) || {}) }; } catch(e){}
