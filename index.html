@@ -29,9 +29,9 @@ button{font:inherit}
 .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--violet),var(--pink));transition:.35s}
 .status b{color:#fff}
 .goal{color:var(--gold);font-weight:700}
-.stage{position:absolute;inset:58px 0 248px;display:grid;place-items:center;padding:14px;z-index:2}
-.frame{width:min(94vw,780px);aspect-ratio:16/9;max-height:min(54vh,560px);border-radius:28px;overflow:hidden;box-shadow:0 28px 90px rgba(0,0,0,.48);border:1px solid rgba(255,255,255,.15);background:#000;position:relative}
-.frame img{width:100%;height:auto;display:block;will-change:transform;transition:transform .35s ease;transform-origin:top center}
+.stage{position:absolute;inset:58px 0 256px;display:grid;place-items:center;padding:14px;z-index:2}
+.frame{width:min(94vw,720px);aspect-ratio:16/9;border-radius:24px;overflow:hidden;box-shadow:0 24px 72px rgba(0,0,0,.46);border:1px solid rgba(255,255,255,.15);background:#000;position:relative;contain:paint}
+.frame img{position:absolute;left:0;top:0;width:100%;height:auto;display:block;max-width:none;image-rendering:auto;backface-visibility:hidden}
 .chapter-badge{position:absolute;left:18px;bottom:215px;z-index:8;background:linear-gradient(90deg,var(--pink),var(--pink2));color:#391b2b;padding:8px 14px;border-radius:11px 11px 0 0;font-size:14px;font-weight:850;box-shadow:0 10px 25px rgba(0,0,0,.35)}
 .dialog{position:absolute;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:7;min-height:205px;background:var(--panel);border:1px solid var(--line);border-radius:0 18px 18px 18px;padding:18px 16px 14px;backdrop-filter:blur(16px);box-shadow:0 22px 54px rgba(0,0,0,.45)}
 .speaker{font-size:12px;font-weight:750;color:var(--pink2);margin-bottom:5px}
@@ -72,7 +72,7 @@ button{font:inherit}
 @media(max-width:560px){
   .bar{width:70px}.goal{display:none}.status{gap:5px}.brand h1{font-size:14px}
   .top-left{gap:6px}.home-btn{padding:7px 9px}.home-label{display:none}
-  .stage{bottom:258px}.chapter-badge,.delta{bottom:224px}.menu-fab{bottom:232px}
+  .stage{bottom:268px}.chapter-badge,.delta{bottom:224px}.menu-fab{bottom:232px}
 }
 </style>
 </head>
@@ -93,7 +93,7 @@ button{font:inherit}
     </div>
   </div>
 
-  <div class="stage"><div class="frame"><img id="sceneImage" src="assets/scene_atlas_v10_720_q70.jpg" alt="scene image"></div></div>
+  <div class="stage"><div class="frame"><img id="sceneImage" src="assets/scene_atlas_v10_720_q70.jpg" alt="scene image" decoding="async" fetchpriority="high" draggable="false"></div></div>
   <div class="chapter-badge" id="badge">里奈</div>
   <button class="menu-btn menu-fab" id="openMenu">話数選択</button>
   <div class="delta" id="delta">+10</div>
@@ -109,7 +109,7 @@ button{font:inherit}
     <div class="card">
       <div class="eyebrow">RINA ROUTE</div>
       <h2>里奈ルート</h2>
-      <p>各話の関係値目標を達成すると、次の話が解放されます。第十一話まで追加済み。選択肢の並び順は毎回ランダムで入れ替わります。</p>
+      <p>各話の関係値目標を達成すると、次の話が解放されます。第十二話まで追加済み。選択肢の並び順は毎回ランダムで入れ替わります。</p>
       <div class="chapter-list" id="chapterList"></div>
       <button class="secondary" id="resetBtn">進行状況をリセット</button>
     </div>
@@ -306,7 +306,7 @@ const chapters = [
     startScore: 230,
     clearTitle: "帰ってきていい場所",
     clearText: "夜の改札前。里奈はあなたの手をそっと握ったまま、少し照れたように笑った。\n\n「合鍵って、ただ部屋を開けるためのものじゃないんだね」\n「この人のところに帰っていいんだって、そう思える気持ちの形なのかも」\n\n会う約束を重ねた先で、ふたりは“次のデート”より少し先の話を自然にできるようになっていた。",
-    teaser: "RINA ROUTE / CHAPTER 5 NEXT\n第十二話『ふたりの選択』\n――近づいた距離の先で、里奈とあなたは“これからどんなふたりでいたいか”を少しずつ選び始める。\n\n※第十二話は次回追加予定",
+    teaser: "RINA ROUTE / CHAPTER 5 NEXT\n第十二話『ふたりの選択』\n――近づいた距離の先で、里奈とあなたは“これからどんなふたりでいたいか”を少しずつ選び始める。\n\n※第十二話追加済み",
     scenes: [
       {speaker:"里奈",sprite:40,text:"数日後の仕事終わり。駅前の待ち合わせ場所で会った里奈は、どこか落ち着かない様子でバッグの持ち手を握っていた。\n「今日ね、ちょっと話したいことがあるの。重い話じゃないんだけど……ちゃんと顔を見て言いたくて」",choices:[{label:"もちろん。里奈の話ならちゃんと聞きたい",delta:10,reaction:"「……うん。そう言ってくれると安心する」里奈はほっとしたように笑った。"},{label:"そんな言い方されたら、ちょっと緊張するな",delta:8,reaction:"「ふふ、私もしてる。だから一緒だね」里奈は少しだけ表情をやわらげた。"},{label:"歩きながらでも話せる？",delta:7,reaction:"「うん。その方が私も話しやすいかも」里奈はあなたの隣に並んだ。"}]},
       {speaker:"里奈",sprite:41,text:"駅近くのカフェに入ると、里奈は温かい飲み物を前にして、小さく息をついた。\n「この前、一緒に朝を迎えたでしょう？ あの日からね、“また会いたい”だけじゃなくて、“またあの場所に行きたい”って思うようになったの」",choices:[{label:"俺も同じ。里奈といた時間がちゃんと残ってる",delta:10,reaction:"「……よかった」里奈は目を細めて、カップを包む指先に少し力を込めた。"},{label:"それだけ、特別な時間だったんだと思う",delta:8,reaction:"「うん。すごく自然で、でも特別だった」里奈は静かに頷いた。"},{label:"またああいう日を作ろう",delta:9,reaction:"「うれしい。次はもっと落ち着いて楽しめる気がする」里奈はやわらかく笑った。"}]},
@@ -315,11 +315,27 @@ const chapters = [
       {speaker:"里奈",sprite:44,text:"帰りのホーム。電車を待つあいだ、里奈はあなたの肩にそっと寄りかかる。\n「今日ね、合鍵そのものが欲しかったわけじゃないって分かったの」\n「あなたのところに帰っていいって思えることが、きっと嬉しいんだと思う」\n少し恥ずかしそうに笑いながら、里奈はあなたを見上げた。\n「だから……これからも、そう思える関係でいようね」",choices:[{label:"約束する。里奈が帰ってきたいと思える場所でいたい",delta:10,reaction:"「……うん」里奈は安心しきったように笑って、あなたの腕にそっと寄り添った。"},{label:"焦らず、でも確かにそうなっていこう",delta:9,reaction:"「その言い方、すごく好き」里奈は小さく頷き、つないだ手を握り直した。"},{label:"まずは次に会う約束から、また重ねていこう",delta:8,reaction:"「うん。ひとつずつでいいよね」里奈は発車案内を見上げながら、穏やかに微笑んだ。"}]}
     ]
   }
+  ,
+  {
+    id: 12,
+    title: "第十二話　ふたりの選択",
+    target: 270,
+    startScore: 250,
+    clearTitle: "同じ未来を選びたい",
+    clearText: "夜のホームに滑り込んだ電車を見送りながら、里奈はあなたの隣で静かに息をついた。\n\n「未来って、ひとつを決めるものだと思ってた」\n「でも本当は、こうしてふたりで少しずつ選んでいくものなのかもしれないね」\n\nこれからどんなふたりでいたいのか。答えを急がず、それでも同じ方向を見ていたいと思えた夜だった。",
+    teaser: "RINA ROUTE / CHAPTER 5 NEXT\n第十三話『ふたりのペース』\n――将来を意識し始めたからこそ、急ぎすぎず、自分たちらしい歩幅を見つけていく。\n\n※第十三話は次回追加予定",
+    scenes: [
+      {speaker:"里奈",sprite:40,text:"次の週末。駅前で会った里奈は、あなたを見るなりやわらかく笑って、いつもより自然に腕を寄せてきた。\n「最近ね、会うたびに少しずつ“ふたりらしさ”ができてきた気がするの」",choices:[{label:"俺もそう思う。会うたびにしっくりくる",delta:10,reaction:"「……うん。そういうの、すごく嬉しい」里奈は安心したように目を細めた。"},{label:"無理してない感じが、いいよね",delta:9,reaction:"「それ、大事だよね」里奈は小さく頷きながら、歩幅をあなたに合わせた。"},{label:"最初の頃よりずっと自然になったね",delta:8,reaction:"「ふふ、あの頃は毎回すごく緊張してたもん」里奈は照れくさそうに笑った。"}]},
+      {speaker:"里奈",sprite:41,text:"カフェで席についたあと、里奈はカップの縁をなぞりながら少し真面目な表情になる。\n「ねえ。これから先のこと、前より考えるようになったけど……だからこそ、急ぎすぎたくないなとも思うの」",choices:[{label:"うん。ちゃんとふたりのペースで進みたい",delta:10,reaction:"「……よかった」里奈はほっとしたように笑って、肩の力を抜いた。"},{label:"焦るより、長く一緒にいられる方が大事だよ",delta:9,reaction:"「その言い方、すごく好き」里奈の表情がやわらかくほどけた。"},{label:"考える時間があるのも、きっといいことだね",delta:8,reaction:"「うん。ちゃんと考えられる相手だって思えるのが嬉しい」里奈は静かに頷いた。"}]},
+      {speaker:"里奈",sprite:42,text:"食後、川沿いを歩きながら里奈はあなたの手を握る。\n「一緒にいたいって気持ちも、本気で考えたいって気持ちも、どっちも大事にしたいの。わがままかな？」",choices:[{label:"わがままじゃない。むしろ大切なことだと思う",delta:10,reaction:"「……そう言ってもらえると、ちゃんと話してよかったって思える」里奈は少しだけ目を潤ませた。"},{label:"その両方を大事にできる関係が理想だね",delta:9,reaction:"「うん。私もそういうふたりでいたい」里奈は手を握り直した。"},{label:"里奈が本気で向き合ってくれてるのが嬉しい",delta:8,reaction:"「私、ちゃんと向き合いたいって思ってるよ」里奈はまっすぐあなたを見つめた。"}]},
+      {speaker:"里奈",sprite:43,text:"静かなラウンジスペースに腰かけると、里奈は少し照れながら笑う。\n「もしこれから、迷うこととか意見が違うことがあっても……ちゃんと話し合えるふたりでいたいな」",choices:[{label:"大丈夫。そういう時こそ、ちゃんと話そう",delta:10,reaction:"「うん」里奈は安心したように頷いて、そっと肩を寄せた。"},{label:"違うことがあっても、一緒に選んでいけるよ",delta:9,reaction:"「……それ、すごく心強い」里奈は小さく笑って、視線をやわらげた。"},{label:"答えを急がずに決めていけたらいいね",delta:8,reaction:"「ふふ、私たちらしいかも」里奈は穏やかな表情で頷いた。"}]},
+      {speaker:"里奈",sprite:44,text:"帰りのホーム。発車案内を見上げたあと、里奈はあなたへ向き直る。\n「これからのこと、まだ全部決まってなくていいんだよね」\n「でも……あなたと一緒に選んでいきたいって気持ちは、もうちゃんと決まってる」\nそう言って、里奈は少し照れながら笑った。\n「だからこれからも、同じ未来を少しずつ選んでいこうね」",choices:[{label:"約束する。これからも一緒に選んでいこう",delta:10,reaction:"「……うん」里奈は安心しきったように笑って、あなたの手を両手で包んだ。"},{label:"里奈となら、その過程もきっと楽しい",delta:9,reaction:"「ふふ、それなら不安より楽しみの方が大きくなりそう」里奈は嬉しそうに微笑んだ。"},{label:"まずは次の約束から、また重ねよう",delta:8,reaction:"「うん。ひとつずつでも、ちゃんと前に進んでるもんね」里奈は静かに頷いた。"}]}
+    ]
+  }
 ]
 
 const SAVE_KEY = 'lasttrain30_rina_v10';
 const SPRITE_COUNT = 45;
-const SPRITE_STEP = 100 / SPRITE_COUNT;
 let save = { unlocked: 1, best: 0, chapterClear: {} };
 try { save = { ...save, ...(JSON.parse(localStorage.getItem(SAVE_KEY)) || {}) }; } catch(e){}
 function persist(){ localStorage.setItem(SAVE_KEY, JSON.stringify(save)); }
@@ -357,7 +373,7 @@ function render(){
   const c = chapters[chapterIndex];
   if(sceneIndex >= c.scenes.length){ finishChapter(); return; }
   const s = c.scenes[sceneIndex];
-  $('sceneImage').style.transform = `translateY(-${s.sprite * SPRITE_STEP}%)`;
+  $('sceneImage').style.top = `-${s.sprite * 100}%`;
   $('badge').textContent = s.speaker || '里奈';
   $('speaker').textContent = s.speaker || '里奈';
   $('line').innerText = s.text;
