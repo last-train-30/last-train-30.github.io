@@ -29,9 +29,9 @@ button{font:inherit}
 .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--violet),var(--pink));transition:.35s}
 .status b{color:#fff}
 .goal{color:var(--gold);font-weight:700}
-.stage{position:absolute;inset:58px 0 242px;display:grid;place-items:center;padding:14px;z-index:2}
-.frame{width:min(94vw,780px);aspect-ratio:16/9;max-height:min(56vh,585px);border-radius:28px;overflow:hidden;box-shadow:0 28px 90px rgba(0,0,0,.48);border:1px solid rgba(255,255,255,.15);background:#000;position:relative}
-.frame img{width:100%;height:auto;display:block;will-change:transform;transition:transform .35s ease}
+.stage{position:absolute;inset:58px 0 248px;display:grid;place-items:center;padding:14px;z-index:2}
+.frame{width:min(94vw,780px);aspect-ratio:16/9;max-height:min(54vh,560px);border-radius:28px;overflow:hidden;box-shadow:0 28px 90px rgba(0,0,0,.48);border:1px solid rgba(255,255,255,.15);background:#000;position:relative}
+.frame img{width:100%;height:auto;display:block;will-change:transform;transition:transform .35s ease;transform-origin:top center}
 .chapter-badge{position:absolute;left:18px;bottom:215px;z-index:8;background:linear-gradient(90deg,var(--pink),var(--pink2));color:#391b2b;padding:8px 14px;border-radius:11px 11px 0 0;font-size:14px;font-weight:850;box-shadow:0 10px 25px rgba(0,0,0,.35)}
 .dialog{position:absolute;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:7;min-height:205px;background:var(--panel);border:1px solid var(--line);border-radius:0 18px 18px 18px;padding:18px 16px 14px;backdrop-filter:blur(16px);box-shadow:0 22px 54px rgba(0,0,0,.45)}
 .speaker{font-size:12px;font-weight:750;color:var(--pink2);margin-bottom:5px}
@@ -72,7 +72,7 @@ button{font:inherit}
 @media(max-width:560px){
   .bar{width:70px}.goal{display:none}.status{gap:5px}.brand h1{font-size:14px}
   .top-left{gap:6px}.home-btn{padding:7px 9px}.home-label{display:none}
-  .stage{bottom:250px}.chapter-badge,.delta{bottom:224px}.menu-fab{bottom:232px}
+  .stage{bottom:258px}.chapter-badge,.delta{bottom:224px}.menu-fab{bottom:232px}
 }
 </style>
 </head>
@@ -109,7 +109,7 @@ button{font:inherit}
     <div class="card">
       <div class="eyebrow">RINA ROUTE</div>
       <h2>里奈ルート</h2>
-      <p>各話の関係値目標を達成すると、次の話が解放されます。第十話まで追加済み。選択肢の並び順は毎回ランダムで入れ替わります。</p>
+      <p>各話の関係値目標を達成すると、次の話が解放されます。第十一話まで追加済み。選択肢の並び順は毎回ランダムで入れ替わります。</p>
       <div class="chapter-list" id="chapterList"></div>
       <button class="secondary" id="resetBtn">進行状況をリセット</button>
     </div>
@@ -289,13 +289,30 @@ const chapters = [
     startScore: 210,
     clearTitle: "未来を話せるふたり",
     clearText: "帰りの電車を待つホームで、里奈はつないだ手を見つめながら、少しだけ照れたように笑った。\n\n「先のことを話すのって、もっと重たいものだと思ってた」\n「でもあなたとなら……楽しみな予定を増やしていくみたいに、少しずつ考えていける気がする」\n\n“次に会う日”だけではなく、“その先”を自然に話せるようになった二人。恋は、少しずつ日常と未来の中へ溶け始めていた。",
-    teaser: "RINA ROUTE / CHAPTER 4 NEXT\n第十一話『合鍵の意味』\n――会う約束を重ねるうちに、里奈がふと口にしたひとこと。ふたりの関係は、“会いに行く”から“帰る場所”を意識する段階へ。\n\n※第十一話は次回追加予定",
+    teaser: "RINA ROUTE / CHAPTER 4 NEXT\n第十一話『合鍵の意味』\n――会う約束を重ねるうちに、里奈がふと口にしたひとこと。ふたりの関係は、“会いに行く”から“帰る場所”を意識する段階へ。\n\n※第十一話追加済み",
     scenes: [
       {speaker:"里奈",sprite:44,text:"翌朝。支度を終えた里奈は、部屋を出る前にもう一度振り返って、少し名残惜しそうに笑った。\n「昨日からずっと一緒だったのに……もう帰る時間なんだね」",choices:[{label:"じゃあ、帰る前にもう少しだけ一緒にいよう",delta:10,reaction:"「……うん。そう言ってくれると思ってた」里奈は嬉しそうに、あなたの隣へ戻ってきた。"},{label:"次に会う日を決めてから帰ろう",delta:9,reaction:"「それなら寂しくないかも」里奈はすぐにスマホを取り出した。"},{label:"またすぐ会えるよ",delta:6,reaction:"「うん。でも、すぐ会いたいって思ってるのは本当だからね」里奈は少しだけ頬を膨らませた。"}]},
       {speaker:"里奈",sprite:41,text:"遅めの朝食をとるために入ったカフェ。窓際の席でメニューを閉じた里奈が、ふと思い出したように笑う。\n「こうして一緒に朝ごはん食べるの、なんだかすごく普通だね。……でも、その普通がちょっと嬉しい」",choices:[{label:"こういう普通を、これから増やしていきたい",delta:10,reaction:"里奈は一瞬目を丸くして、それからゆっくり笑った。\n「……私も。同じこと考えてた」"},{label:"昨日より今の方が恋人っぽいかも",delta:8,reaction:"「ふふ、分かる。特別な夜より朝ごはんで実感するなんて変なの」里奈は楽しそうに笑った。"},{label:"毎週こうしてもいいくらいだね",delta:9,reaction:"「毎週？」里奈は嬉しそうに聞き返し、少し考えてから「……それ、いいな」と呟いた。"}]},
       {speaker:"里奈",sprite:42,text:"食事のあと、川沿いをゆっくり歩く。休日の柔らかな陽射しの中で、里奈はつないだ手を軽く揺らした。\n「ねえ。これから一緒にやりたいことってある？ 旅行とか、季節のイベントとか……もっと小さいことでも」",choices:[{label:"行きたい場所をふたりで一つずつ増やしたい",delta:10,reaction:"「いいね。じゃあ“ふたりの行きたい場所リスト”作ろうよ」里奈の表情がぱっと明るくなった。"},{label:"特別な予定より、何でもない休日を一緒に過ごしたい",delta:10,reaction:"「……それ、すごく好き」里奈は手を握り直して、歩幅をあなたに合わせた。"},{label:"里奈がやりたいことに付き合いたい",delta:7,reaction:"「私だけじゃなくて、あなたのやりたいことも聞きたいな」里奈は少し嬉しそうに笑った。"}]},
       {speaker:"里奈",sprite:43,text:"休憩に入った静かなラウンジで、里奈は少し迷ってから声を落とす。\n「私ね……もっと先のことも、少し考えるようになったの。今すぐじゃないよ？ でも、いつか一緒に暮らしたらどんな感じなのかな、とか」",choices:[{label:"俺も考えたことある。里奈となら楽しそうだ",delta:10,reaction:"「……ほんと？」里奈は驚いたあと、隠しきれないほど嬉しそうに笑った。\n「なんか急に、未来が近くなった気がする」"},{label:"そういう話をできるのが嬉しい",delta:9,reaction:"「うん。決めるんじゃなくて、話せることが嬉しいんだと思う」里奈は安心したように微笑んだ。"},{label:"まだ先だけど、少しずつ考えていこう",delta:8,reaction:"「うん。焦りたくはないけど……考えないふりもしたくない」里奈は静かに頷いた。"}]},
       {speaker:"里奈",sprite:40,text:"夕方。帰りの駅で電車を待ちながら、里奈はあなたの肩にそっと寄りかかる。\n「昨日までは次のデートのことばっかり考えてた。でも今日は、その次、そのまた次まで楽しみになってる」\n少し照れたように笑って、里奈は続けた。\n「これからの約束、たくさん増やしていこうね」",choices:[{label:"約束しよう。里奈との先をちゃんと考えていきたい",delta:10,reaction:"「……うん」里奈は目を細め、指を絡めるように手を握った。\n「その言葉、忘れないからね」"},{label:"次だけじゃなくて、その先も一緒に決めよう",delta:9,reaction:"「ふふ、それなら予定表がいっぱいになりそう」里奈は幸せそうに笑った。"},{label:"まずは来週。また会おう",delta:8,reaction:"「うん。そうやって一つずつでいいよね」里奈は頷き、発車案内を見上げた。"}]}
+    ]
+  }
+  ,
+  {
+    id: 11,
+    title: "第十一話　合鍵の意味",
+    target: 250,
+    startScore: 230,
+    clearTitle: "帰ってきていい場所",
+    clearText: "夜の改札前。里奈はあなたの手をそっと握ったまま、少し照れたように笑った。\n\n「合鍵って、ただ部屋を開けるためのものじゃないんだね」\n「この人のところに帰っていいんだって、そう思える気持ちの形なのかも」\n\n会う約束を重ねた先で、ふたりは“次のデート”より少し先の話を自然にできるようになっていた。",
+    teaser: "RINA ROUTE / CHAPTER 5 NEXT\n第十二話『ふたりの選択』\n――近づいた距離の先で、里奈とあなたは“これからどんなふたりでいたいか”を少しずつ選び始める。\n\n※第十二話は次回追加予定",
+    scenes: [
+      {speaker:"里奈",sprite:40,text:"数日後の仕事終わり。駅前の待ち合わせ場所で会った里奈は、どこか落ち着かない様子でバッグの持ち手を握っていた。\n「今日ね、ちょっと話したいことがあるの。重い話じゃないんだけど……ちゃんと顔を見て言いたくて」",choices:[{label:"もちろん。里奈の話ならちゃんと聞きたい",delta:10,reaction:"「……うん。そう言ってくれると安心する」里奈はほっとしたように笑った。"},{label:"そんな言い方されたら、ちょっと緊張するな",delta:8,reaction:"「ふふ、私もしてる。だから一緒だね」里奈は少しだけ表情をやわらげた。"},{label:"歩きながらでも話せる？",delta:7,reaction:"「うん。その方が私も話しやすいかも」里奈はあなたの隣に並んだ。"}]},
+      {speaker:"里奈",sprite:41,text:"駅近くのカフェに入ると、里奈は温かい飲み物を前にして、小さく息をついた。\n「この前、一緒に朝を迎えたでしょう？ あの日からね、“また会いたい”だけじゃなくて、“またあの場所に行きたい”って思うようになったの」",choices:[{label:"俺も同じ。里奈といた時間がちゃんと残ってる",delta:10,reaction:"「……よかった」里奈は目を細めて、カップを包む指先に少し力を込めた。"},{label:"それだけ、特別な時間だったんだと思う",delta:8,reaction:"「うん。すごく自然で、でも特別だった」里奈は静かに頷いた。"},{label:"またああいう日を作ろう",delta:9,reaction:"「うれしい。次はもっと落ち着いて楽しめる気がする」里奈はやわらかく笑った。"}]},
+      {speaker:"里奈",sprite:42,text:"店を出たあと、夜風のやさしい遊歩道を並んで歩く。里奈は少し迷ってから、あなたの手を取った。\n「ねえ……もし、だよ？ もっと気軽に会えるようになったら、きっと今より安心できるんだろうなって思ったの」",choices:[{label:"俺も、会いたい時にすぐ会えたら嬉しい",delta:10,reaction:"里奈はぱっと顔を上げて、少し照れながら笑った。\n「……同じこと考えてたんだ」"},{label:"無理のない形で距離を縮めていきたいね",delta:8,reaction:"「うん。急ぎたいわけじゃなくて、ちゃんと近づいていきたいの」里奈は指先をそっと絡めた。"},{label:"里奈がそう思ってくれるのが嬉しい",delta:9,reaction:"「私、本当にそう思ってるよ」里奈はまっすぐあなたを見つめた。"}]},
+      {speaker:"里奈",sprite:43,text:"途中で立ち寄った静かなベンチスペース。里奈はバッグから新しいキーケースを取り出して、照れくさそうに笑う。\n「実はこれ、この前買ったの。見た時にね……“いつか合鍵を入れる日が来るのかな”って考えちゃって」\n少し俯いてから、里奈はそっと続けた。\n「今すぐ欲しいとか、そういう意味じゃないよ？ ただ、そういう未来を想像したら……嬉しかったの」",choices:[{label:"その未来、俺も想像した",delta:10,reaction:"「……ほんと？」里奈は驚いてから、隠しきれないほど嬉しそうに笑った。\n「それだけで、今日ちゃんと話してよかったって思える」"},{label:"合鍵って、信頼の証みたいなものだよね",delta:9,reaction:"「うん。だから軽くは言いたくなかったの」里奈はキーケースを大事そうに握った。"},{label:"そういう話をしてくれるのが嬉しい",delta:8,reaction:"「私も、あなたになら話していいって思えたの」里奈は安心したように微笑んだ。"}]},
+      {speaker:"里奈",sprite:44,text:"帰りのホーム。電車を待つあいだ、里奈はあなたの肩にそっと寄りかかる。\n「今日ね、合鍵そのものが欲しかったわけじゃないって分かったの」\n「あなたのところに帰っていいって思えることが、きっと嬉しいんだと思う」\n少し恥ずかしそうに笑いながら、里奈はあなたを見上げた。\n「だから……これからも、そう思える関係でいようね」",choices:[{label:"約束する。里奈が帰ってきたいと思える場所でいたい",delta:10,reaction:"「……うん」里奈は安心しきったように笑って、あなたの腕にそっと寄り添った。"},{label:"焦らず、でも確かにそうなっていこう",delta:9,reaction:"「その言い方、すごく好き」里奈は小さく頷き、つないだ手を握り直した。"},{label:"まずは次に会う約束から、また重ねていこう",delta:8,reaction:"「うん。ひとつずつでいいよね」里奈は発車案内を見上げながら、穏やかに微笑んだ。"}]}
     ]
   }
 ]
